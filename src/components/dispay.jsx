@@ -3,14 +3,14 @@ import { NumberContext } from './number_provider';
 
 const Display = () => {
 
-  const { number, storedNumber, functionType } = useContext(NumberContext);
+  const { number, storedNumber, functionType, result } = useContext(NumberContext);
   return (
     <div>
       <h2>
-        {!number.length && !storedNumber ? '0' : number || storedNumber}
+      {result ? result : !storedNumber ? 'ENTER SOME NUMBERS' : `${storedNumber} ${functionType} ${number}`}
       </h2>
       <p className="secondDisplay">
-        {!storedNumber ? 'ENTER SOME NUMBERS' : `${storedNumber} ${functionType} ${number}`}
+      {!number.length && !storedNumber ? '0' : number || storedNumber}
       </p>
     </div>
   );

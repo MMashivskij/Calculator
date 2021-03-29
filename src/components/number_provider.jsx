@@ -6,9 +6,7 @@ const NumberProvider = props => {
   const [number, setNumber] = useState('');
   const [inMemory, setInMemory] = useState('');
   const [storedNumber, setStoredNumber] = useState('');
-  const [result, setResult] = useState('');
   const [functionType, setFunctionType] = useState('');
-  // const [expression, setExpression] = useState('');
 
   useEffect(() => {
     const onKeypress = e => {
@@ -90,23 +88,23 @@ const NumberProvider = props => {
     if (number && storedNumber) {
       switch (functionType) {
         case '+':
-          setResult(`${Math.round(`${(parseFloat(storedNumber) + parseFloat(number)) * 100}`) / 100}`);
+          setStoredNumber(`${Math.round(`${(parseFloat(storedNumber) + parseFloat(number)) * 100}`) / 100}`);
           break;
         case '-':
-          setResult(`${Math.round(`${(parseFloat(storedNumber) - parseFloat(number)) * 1000}`) / 1000}`);
+          setStoredNumber(`${Math.round(`${(parseFloat(storedNumber) - parseFloat(number)) * 1000}`) / 1000}`);
           break;
         case '/':
           if(number == 0) {
             alert("It is impossible to divide by zero")
             break;
           }
-          setResult(`${Math.round(`${(parseFloat(storedNumber) / parseFloat(number)) * 1000}`) / 1000}`);
+          setStoredNumber(`${Math.round(`${(parseFloat(storedNumber) / parseFloat(number)) * 1000}`) / 1000}`);
           break;
         case '*':
-          setResult(`${Math.round(`${parseFloat(storedNumber) * parseFloat(number) * 1000}`) / 1000}`);
+          setStoredNumber(`${Math.round(`${parseFloat(storedNumber) * parseFloat(number) * 1000}`) / 1000}`);
           break;
         case '%':
-          setResult(`${Math.round(`${parseFloat(storedNumber) / 100 * parseFloat(number) * 1000}`) / 1000}`)
+          setStoredNumber(`${Math.round(`${parseFloat(storedNumber) / 100 * parseFloat(number) * 1000}`) / 1000}`)
         default:
           break;
       }
@@ -127,7 +125,6 @@ const NumberProvider = props => {
         handleSetStoredValue,
         handleToggleNegative,
         number,
-        result,
         storedNumber,
         setNumber,
       }}
